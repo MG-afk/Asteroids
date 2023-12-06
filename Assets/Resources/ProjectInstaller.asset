@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eeeeedb674445841b281c6d7113fa10, type: 3}
+  m_Name: ProjectInstaller
+  m_EditorClassIdentifier: 
+  _bulletData:
+    Prefab: {fileID: 2210672987086602376, guid: 8078aaf64a1b6ad48a46b28e5ffbadff, type: 3}
+    <ThrustForce>k__BackingField: 500
+    <TimeToDisappear>k__BackingField: 1
+  _meteorData:
+    Prefab: {fileID: 4860870202118439817, guid: 6ff7debde8492a9469fb52397719f7bf, type: 3}
+    <ThrustForce>k__BackingField: 100
+    <BigMeteor>k__BackingField:
+      <MinScale>k__BackingField: 2
+      <MaxScale>k__BackingField: 3
+    <LittleMeteor>k__BackingField:
+      <MinScale>k__BackingField: 0.25
+      <MaxScale>k__BackingField: 1.25
+  _shipData:
+    Prefab: {fileID: 7043159554492114543, guid: d73f5d3304d30544ea2b0ce18ac201fb, type: 3}
+    <ThrustForce>k__BackingField: 15
+    <RotationSpeed>k__BackingField: 2
