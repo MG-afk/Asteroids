@@ -1,27 +1,33 @@
-﻿using JetBrains.Annotations;
+﻿using AsteroidsGame.GameState;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 namespace AsteroidsGame.Panels
 {
-    public class GameOverPanel : MonoBehaviour, ILateDisposable
+    public class GameOverPanel : MonoBehaviour
     {
         [SerializeField]
         private Button _restartButton;
 
-        private IGameManager _gameManager;
+        private IStateSubscriber _stateSubscriber;
+        private IStatePublisher _statePublisher;
 
         [UsedImplicitly, Inject]
-        public void Construct(IGameManager gameManager)
+        public void Construct(
+            IStateSubscriber stateSubscriber,
+            IStatePublisher statePublisher)
         {
-            _gameManager = gameManager;
-            _gameManager.GameOver += OnGameOver;
+            _stateSubscriber = stateSubscriber;
+            _statePublisher = statePublisher;
+
+            _stateSubscriber.Subscribe<GameOverState>(OnGameOver);
         }
 
-        public void LateDispose()
+        private void OnDestroy()
         {
-            _gameManager.GameOver -= OnGameOver;
+            _stateSubscriber.Unsubscribe<GameOverState>(OnGameOver);
         }
 
         private void OnEnable()
@@ -36,7 +42,7 @@ namespace AsteroidsGame.Panels
 
         private void Restart()
         {
-            _gameManager.Restart();
+            _statePublisher.Publish<GameResetState>();
             gameObject.SetActive(false);
         }
 

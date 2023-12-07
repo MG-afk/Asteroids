@@ -43,7 +43,7 @@ namespace AsteroidsGame.Bullet
             if (!IsPlayer)
                 return true;
 
-            _gameManager.AddScore(100);
+            _gameManager.AddScore(1);
 
             return true;
         }

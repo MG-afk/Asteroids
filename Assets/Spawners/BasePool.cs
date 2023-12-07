@@ -6,14 +6,14 @@ namespace AsteroidsGame.Spawners
 {
     public abstract class BasePool<TValue> : MemoryPool<TValue> where TValue : MonoBehaviour, ISpawnable
     {
-        private event Action Despowned;
+        private event Action Despawned;
 
         protected override void OnSpawned(TValue item)
         {
             item.gameObject.SetActive(true);
             item.AfterSpawn();
 
-            Despowned += () =>
+            Despawned += () =>
             {
                 OnDespawned(item);
             };
@@ -26,7 +26,7 @@ namespace AsteroidsGame.Spawners
 
         public void DespawnAll()
         {
-            Despowned?.Invoke();
+            Despawned?.Invoke();
         }
     }
 }

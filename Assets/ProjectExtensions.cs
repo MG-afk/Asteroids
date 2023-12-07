@@ -30,14 +30,14 @@ namespace AsteroidsGame
             var bottomLeft = camera.ViewportToWorldPoint(new Vector3(0f, 0f));
             var topRight = camera.ViewportToWorldPoint(new Vector3(1f, 1f));
 
-            var spriteWidth = spriteRenderer.bounds.size.x * 0.5f;
-            var spriteHeight = spriteRenderer.bounds.size.y * 0.5f;
+            var halfSpriteWidth = spriteRenderer.bounds.size.x * 0.5f;
+            var halfSpriteHeight = spriteRenderer.bounds.size.y * 0.5f;
 
-            var rightBound = topRight.x + spriteWidth;
-            var leftBound = bottomLeft.x - spriteWidth;
+            var rightBound = topRight.x + halfSpriteWidth;
+            var leftBound = bottomLeft.x - halfSpriteWidth;
 
-            var upperBound = topRight.y + spriteHeight;
-            var bottomBound = bottomLeft.y - spriteHeight;
+            var upperBound = topRight.y + halfSpriteHeight;
+            var bottomBound = bottomLeft.y - halfSpriteHeight;
 
             var position = transform.position;
 

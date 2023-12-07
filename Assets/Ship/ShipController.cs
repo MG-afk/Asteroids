@@ -13,6 +13,7 @@ namespace AsteroidsGame.Ship
         private ISpawnerController<BulletController> _bulletSpawner;
         private IGameManager _gameManager;
         private InputActions _inputActions;
+
         private Vector2 _input;
 
         public bool IsIndestructible { get; private set; }
@@ -69,7 +70,7 @@ namespace AsteroidsGame.Ship
 
         private void Rotate()
         {
-            transform.Rotate(Vector3.back, _input.x * Data.RotationSpeed);
+            transform.Rotate(Vector3.back, _input.x * Data.RotationSpeed * Time.deltaTime);
         }
 
         public override void AfterSpawn()

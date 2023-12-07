@@ -18,14 +18,14 @@ MonoBehaviour:
     <TimeToDisappear>k__BackingField: 1
   _meteorData:
     Prefab: {fileID: 4860870202118439817, guid: 6ff7debde8492a9469fb52397719f7bf, type: 3}
-    <ThrustForce>k__BackingField: 100
+    <ThrustForce>k__BackingField: 200
     <BigMeteor>k__BackingField:
       <MinScale>k__BackingField: 2
       <MaxScale>k__BackingField: 3
     <LittleMeteor>k__BackingField:
-      <MinScale>k__BackingField: 0.25
-      <MaxScale>k__BackingField: 1.25
+      <MinScale>k__BackingField: 1
+      <MaxScale>k__BackingField: 1.5
   _shipData:
     Prefab: {fileID: 7043159554492114543, guid: d73f5d3304d30544ea2b0ce18ac201fb, type: 3}
     <ThrustForce>k__BackingField: 15
-    <RotationSpeed>k__BackingField: 2
+    <RotationSpeed>k__BackingField: 300

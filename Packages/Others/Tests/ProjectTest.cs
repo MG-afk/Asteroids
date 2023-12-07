@@ -19,17 +19,18 @@ public class ProjectTest : ZenjectUnitTestFixture
     }
 
     [Test]
-    public void GameManager_ShouldEndGameWhenLosingAllLives()
+    public void GameManager_ShouldDisableShipWhenLosingAllLives()
     {
         var gameManager = Container.Resolve<IGameManager>();
         var spawnerController = Container.Resolve<ISpawnerController<ShipController>>();
         var shipController = spawnerController.Spawn();
 
-        gameManager.LoseLife();
-        gameManager.LoseLife();
-        gameManager.LoseLife();
+        for (int i = 0; i < 3; i++)
+        {
+            gameManager.LoseLife();
+        }
 
-        Assert.IsNull(shipController);
+        Assert.IsFalse(shipController.gameObject.activeSelf);
     }
 
     [Test]

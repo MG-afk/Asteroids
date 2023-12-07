@@ -1,4 +1,5 @@
 ﻿using AsteroidsGame.Bullet;
+using AsteroidsGame.GameState;
 using AsteroidsGame.Meteor;
 using AsteroidsGame.Ship;
 using AsteroidsGame.Spawners;
@@ -10,6 +11,8 @@ namespace AsteroidsGame
     [CreateAssetMenu(menuName = "Asteroids/ProjectInstaller")]
     public class ProjectInstaller : ScriptableObjectInstaller
     {
+        private const string ParentName = "SpawnedObjects";
+
         [SerializeField]
         private BulletData _bulletData;
 
@@ -32,12 +35,13 @@ namespace AsteroidsGame
             container.Bind<InputActions>().AsSingle();
 
             container.BindInterfacesAndSelfTo<Spawner>().AsSingle();
+            container.BindInterfacesAndSelfTo<GameStateMachine>().AsSingle();
             container.BindInterfacesAndSelfTo<GameManager>().AsSingle();
         }
 
         private void BindMemoryPools(DiContainer container)
         {
-            var parent = new GameObject("SpawnedObjects").transform;
+            var parent = new GameObject(ParentName).transform;
 
             container.BindMemoryPool<BulletController, BulletController.Pool>()
                 .WithMaxSize(100)

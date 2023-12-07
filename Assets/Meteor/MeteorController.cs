@@ -32,7 +32,7 @@ namespace AsteroidsGame.Meteor
             Rigidbody.mass = scale;
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerStay2D(Collider2D collision)
         {
             if (!collision.gameObject.TryGetComponent(out IHitable hitable))
                 return;
@@ -45,7 +45,7 @@ namespace AsteroidsGame.Meteor
 
         void OnCollisionEnter2D(Collision2D collision)
         {
-            Rigidbody.AddForce(collision.contacts[0].normal * Data.ThrustForce);
+            Rigidbody.AddForce(collision.GetContact(0).normal * Data.ThrustForce);
         }
 
         private void BreakIntoTwoPices()
